@@ -6,6 +6,7 @@ import { MainContext } from '../../../pages'
 import React from 'react'
 
 export const WelcomeStep = () => {
+    const {onNextStep} = React.useContext(MainContext)
 
 
     return (
@@ -19,7 +20,7 @@ export const WelcomeStep = () => {
                 finishing youches, we’re adding people gradually to make sure nothing breaks :)
             </p>
             <div>
-                <Button>
+                <Button onClick={onNextStep}>
                     Get your username
                     <img className="d-ib ml-10" src="/static/arrow.svg" />
                 </Button>

@@ -22,6 +22,7 @@ export const EnterCodeStep = () => {
             newArr[index] = value
             return newArr
         })
+
         if (event.target.nextSibling) {
             event.target.nextSibling.focus()
         }

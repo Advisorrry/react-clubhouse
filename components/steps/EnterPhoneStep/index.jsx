@@ -6,9 +6,12 @@ import { Button } from '../../Button'
 import { StepInfo } from '../../StepInfo'
 
 import styles from './EnterPhoneStep.module.scss'
+import { MainContext } from '../../../pages'
 
 export const EnterPhoneStep = () => {
-    const [values, setValues] = React.useState()
+    const [values, setValues] = React.useState('')
+    const {onNextStep} = React.useContext(MainContext)
+    
 
     const nextDisabled = !values.formattedValue || values.formattedValue.includes('_')
 
@@ -33,7 +36,7 @@ export const EnterPhoneStep = () => {
                         }
                     />
                 </div>
-                <Button disabled={nextDisabled}>
+                <Button disabled={nextDisabled} onClick={onNextStep}>
                     Next
                     <img className="d-ib ml-10" src="/static/arrow.svg" />
                 </Button>
