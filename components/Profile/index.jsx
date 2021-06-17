@@ -16,7 +16,7 @@ export const Profile = ({ fullname, username, avatarUrl, about }) => {
                 </div>
             </Link>
 
-            <div className="d-flex  align-items-center">
+            <div className="d-flex align-items-center">
                 <div className="d-flex align-items-center">
                     <Avatar src={avatarUrl} width="100px" height="100px" />
                     <div className="d-flex flex-column ml-30 mr-30">

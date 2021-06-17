@@ -1,9 +1,12 @@
-
+import { Header } from '../components/Header'
 
 export default function RoomPage() {
     return (
-        <div>
-            <h1>комнаты</h1>
-        </div>
+       <>
+       <Header />
+       <div className='container'>
+           <h2>комнаты</h2>
+       </div>
+       </>
     )
 }
