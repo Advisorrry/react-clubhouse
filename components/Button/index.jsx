@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './Button.module.scss'
 
@@ -19,4 +20,10 @@ export const Button = ({ children, disabled, color, onClick, className }) => {
             {children}
         </button>
     )
+}
+
+Button.propTypes = {
+    children: PropTypes.element,
+    disabled: PropTypes.bool,
+    color: PropTypes.string,
 }
