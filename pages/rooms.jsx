@@ -15,7 +15,7 @@ export default function RoomPage({ rooms = [] }) {
                 </div>
                 <div className="grid">
                     {rooms.map((obj) => (
-                        <Link key={obj.id} href="/rooms/test-room">
+                        <Link key={obj.id} href={`/rooms/${obj.id}`}>
                             <a className="d-flex">
                                 <ConversationCard
                                     title={obj.title}
@@ -42,5 +42,7 @@ export const getServerSideProps = async () => {
                 rooms: data,
             },
         }
-    } catch (error) {}
+    } catch (error) {
+        console.log(error, 'ошибка')
+    }
 }
