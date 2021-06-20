@@ -1,20 +1,32 @@
 {
-  "name": "client",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "axios": "^0.21.1",
-    "clsx": "^1.1.1",
-    "next": "10.2.3",
-    "node-sass": "5.0.0",
-    "prop-types": "^15.7.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-number-format": "^4.6.3"
-  }
+    "name": "client",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "server": "nodemon ./server/server.js "
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "clsx": "^1.1.1",
+        "cors": "^2.8.5",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
+        "next": "10.2.3",
+        "node-sass": "5.0.0",
+        "nodemon": "^2.0.7",
+        "passport": "^0.4.1",
+        "passport-twitter": "^1.0.4",
+        "prop-types": "^15.7.2",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "react-number-format": "^4.6.3"
+    },
+    "devDependencies": {
+        "passport-github": "^1.1.0"
+    }
 }
