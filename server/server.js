@@ -1,7 +1,7 @@
 import express from 'express'
-import dotenv from 'dotenv'
+import https from 'https'
+import fs from 'fs'
 
-dotenv.config()
 
 import { passport } from './core/passport.js'
 
@@ -14,13 +14,17 @@ app.get(
     passport.authenticate('github', { failureRedirect: '/login' }),
     function (req, res) {
         // Successful authentication, redirect home.
-        res.redirect('/')
+        res.send()
     },
 )
-app.listen(3001, (err) => {
-    if (err) {
-        throw Error('ошибка')
-    }
-
-    console.log('server started')
-})
+https
+    .createServer(
+        {
+            key: fs.readFileSync('server.key'),
+            cert: fs.readFileSync('server.cert'),
+        },
+        app,
+    )
+    .listen(3001, function () {
+        console.log('server started')
+    })

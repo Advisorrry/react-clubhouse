@@ -1,5 +1,8 @@
+import dotenv from 'dotenv'
 import passport from 'passport'
 import { Strategy as GitHubStrategy } from 'passport-github'
+
+dotenv.config()
 
 passport.use(
     'github',
@@ -7,12 +10,15 @@ passport.use(
         {
             clientID: process.env.GITHUB_CLIENT_ID,
             consumerSecret: process.env.GITHUB_CLIENT_SECRET,
-            callbackURL: 'http://hocalhost:3001/auth/github/callback',
+            callbackURL: 'http://localhost:3001/auth/github/callback',
         },
-        function (accessToken, refreshToken, profile, cb) {
-            User.findOrCreate({ githubId: profile.id }, function (err, user) {
-                return cb(err, user)
-            })
+        (accessToken, refreshToken, profile, cb) => {
+            const user = {
+                fullname: profile.displayName,
+                avatarUrl: profile.photos?.[0].value,
+                
+            }
+            cb()
         },
     ),
 )
