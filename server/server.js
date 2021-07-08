@@ -1,9 +1,10 @@
-import express from 'express'
-import https from 'https'
-import fs from 'fs'
+const express = require('express')
+const https = require('https')
+const fs = require('fs')
+const  passport = require('./core/passport.js')
+require('./core/db.js')
 
 
-import { passport } from './core/passport.js'
 
 const app = express()
 

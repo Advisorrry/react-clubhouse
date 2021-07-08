@@ -3,7 +3,6 @@
  "version": "1.0.0",
  "main": "index.js",
  "license": "MIT",
- "type":"module",
  "scripts": {
   "server": "nodemon ./server.js "
  },
@@ -21,6 +20,7 @@
   "passport": "^0.4.1",
   "pg": "^8.6.0",
   "pg-hstore": "^2.3.4",
-  "sequelize": "^6.6.4"
+  "sequelize": "^6.6.4",
+  "sequelize-cli": "^6.2.0"
  }
 }

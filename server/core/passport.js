@@ -1,6 +1,6 @@
-import dotenv from 'dotenv'
-import passport from 'passport'
-import { Strategy as GitHubStrategy } from 'passport-github'
+const dotenv = require('dotenv')
+const passport = require('passport')
+const GitHubStrategy = require('passport-github').Strategy;
 
 dotenv.config()
 
@@ -16,11 +16,10 @@ passport.use(
             const user = {
                 fullname: profile.displayName,
                 avatarUrl: profile.photos?.[0].value,
-                
             }
             cb()
         },
     ),
 )
 
-export { passport }
+module.exports = passport 
