@@ -11,7 +11,7 @@ const app = express()
 app.get('/auth/github', passport.authenticate('github'))
 
 app.get(
-    '/auth/github/callback',
+    '/auth/github/callback/',
     passport.authenticate('github', { failureRedirect: '/login' }),
     function (req, res) {
         // Successful authentication, redirect home.
