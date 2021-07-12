@@ -23,7 +23,6 @@ export const Button = ({ children, disabled, color, onClick, className }) => {
 }
 
 Button.propTypes = {
-    children: PropTypes.element,
     disabled: PropTypes.bool,
     color: PropTypes.string,
 }

@@ -8,13 +8,19 @@ import React from 'react'
 import { MainContext } from '../../../pages'
 
 export const EnterNameStep = () => {
-    const [inputValue, setInputValue] = React.useState('')
-    const {onNextStep} = React.useContext(MainContext)
+    const {onNextStep, userData, setFieldValues} = React.useContext(MainContext)
+    const [inputValue, setInputValue ] = React.useState(userData.fullname)
+    
 
     const nextDisabled = !inputValue
 
     const handleChangeInput = (event) => {
         setInputValue(event.target.value)
+    }
+
+    const onClickNextStep = () => {
+        setFieldValues('fullname', inputValue)
+        onNextStep()
     }
 
     return (
@@ -33,7 +39,7 @@ export const EnterNameStep = () => {
                         placeholder="Enter fullname"
                     />
                 </div>
-                <Button disabled={nextDisabled} onClick={onNextStep}>
+                <Button disabled={nextDisabled} onClick={onClickNextStep}>
                     Next
                     <img className="d-ib ml-10" src="/static/arrow.svg" />
                 </Button>
