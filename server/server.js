@@ -2,10 +2,12 @@ const express = require('express')
 const https = require('https')
 const fs = require('fs')
 const { passport } = require('./core/passport.js')
+const cors = require('cors')
 require('./core/db.js')
 
 const app = express()
 
+app.use(cors())
 app.use(passport.initialize())
 
 app.get('/auth/github', passport.authenticate('github'))
