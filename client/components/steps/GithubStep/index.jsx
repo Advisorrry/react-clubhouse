@@ -3,12 +3,12 @@ import { WhiteBlock } from '../../WhiteBlock'
 import { Button } from '../../Button'
 import { StepInfo } from '../../StepInfo'
 
-import styles from './TwitterStep.module.scss'
+import styles from './GithubStep.module.scss'
 import React from 'react'
 import { MainContext } from '../../../pages'
 
-export const TwitterStep = () => {
-    const { onNextStep } = React.useContext(MainContext)
+export const GithubStep = () => {
+    const { onNextStep, setUserData, userData } = React.useContext(MainContext)
 
     const onClickAuth = () => {
         const win = window.open(
@@ -16,24 +16,21 @@ export const TwitterStep = () => {
             'Auth',
             'width=500,height=500,status=yes,toolbar=no,menubar=no,location=no',
         )
-
-        const timer = setInterval(() => {
-            if (win.closed) {
-                clearInterval(timer)
-                onNextStep()
-            }
-        }, 100)
     }
 
     React.useEffect(() => {
-        window.addEventListener('message', (data) => {
-            console.log(data)
+        window.addEventListener('message', ({ data }) => {
+            if (typeof data === 'string' && data.includes('avatarUrl')) {
+                const json = JSON.parse(data)
+                setUserData(json)
+                onNextStep()
+            }
         })
     }, [])
 
     return (
         <div className={styles.block}>
-            <StepInfo icon="/static/connect.png" title="Do you want import info from Twitter?" />
+            <StepInfo icon="/static/connect.png" title="Do you want import info from GitHub?" />
             <WhiteBlock className={clsx('m-auto mt-40', styles.whiteBlock)}>
                 <div className={styles.avatar}>
                     <b>AD</b>
@@ -50,12 +47,13 @@ export const TwitterStep = () => {
                         />
                     </svg>
                 </div>
-                <h2 className="mb-40">Archakov Dennis</h2>
-                <Button onClick={onClickAuth}>
+                <h2 className="mb-40">{userData.fullname}</h2>
+                <Button onClick={onClickAuth} className={styles.button}>
                     <img
-                        src="/static/twitter.svg"
-                        alt="Twitter logo"
-                        className={styles.twitterLogo}
+                        src="/static/GitHub.png"
+                        alt="GitHub logo"
+                        className={styles.GitHubLogo}
+                        width='18px'
                     />
                     Import from GitHub
                     <img className="d-ib ml-10" src="/static/arrow.svg" />
