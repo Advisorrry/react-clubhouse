@@ -1,9 +1,10 @@
-const passport = require('passport') 
+const passport = require('passport')
 const GitHubStrategy = require('passport-github2').Strategy
 const dotenv = require('dotenv')
 dotenv.config()
 
-passport.use('github',
+passport.use(
+    'github',
     new GitHubStrategy(
         {
             clientID: process.env.GITHUB_CLIENT_ID,
@@ -11,7 +12,12 @@ passport.use('github',
             callbackURL: 'http://localhost:3001/auth/github/callback',
         },
         (accessToken, refreshToken, profile, cb) => {
-           console.log(accessToken, refreshToken, profile, cb);
+            const user = {
+                name: profile.displayName,
+                avatarUrl: profile.photos?.[0].value,
+                username: profile.username
+            }
+            console.log(accessToken, profile, cb, user)
         },
     ),
 )

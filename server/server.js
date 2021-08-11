@@ -1,4 +1,5 @@
 const express = require('express')
+const sequelize = require('./core/db.js')
 
 const dotenv = require('dotenv')
 dotenv.config()
@@ -19,5 +20,5 @@ app.get(
 const port = 3001
 
 app.listen(port, () => {
-    console.log(`Server started at http://localhost:${port}`)
+    console.log(`http://localhost:3001/auth/github/`)
 })
