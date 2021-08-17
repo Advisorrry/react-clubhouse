@@ -7,7 +7,7 @@ services:
         environment:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: postgres
-            POSTGRES_DB: 'clubhouse'
+            POSTGRES_DB: clubhouse
             PGDATA: /data/postgres
         volumes:
             - postgres:/data/postgres
