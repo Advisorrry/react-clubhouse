@@ -7,6 +7,8 @@ dotenv.config()
 const passport = require('./core/passport.js')
 const app = express()
 
+app.use(passport.initialize())
+
 app.get('/auth/github', passport.authenticate('github'))
 
 app.get(
