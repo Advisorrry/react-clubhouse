@@ -25,7 +25,15 @@
     width: 460px;
 }
 
-.twitterLogo {
+.button {
+    background-color: #24292E;
+
+    &:hover {
+        background-color: lighten(#24292E, 10)
+    }
+}
+
+.GitHubLogo {
     display: inline-block;
     position: relative;
     top: 1px;

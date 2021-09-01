@@ -1,11 +1,15 @@
 import clsx from 'clsx'
 import Link from 'next/link'
 import React from 'react'
+import { MainContext } from '../../pages'
 import { Avatar } from '../Avatar'
 
 import styles from './Header.module.scss'
 
 export const Header = () => {
+    const {userData} = React.useContext(MainContext)
+    
+
     return (
         <div className={styles.header}>
             <div className="container d-flex align-items-center justify-content-between">

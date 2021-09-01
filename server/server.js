@@ -1,9 +1,10 @@
 const express = require('express')
-const https = require('https')
-const fs = require('fs')
-const { passport } = require('./core/passport.js')
-require('./core/db.js')
+const sequelize = require('./core/db.js')
 
+const dotenv = require('dotenv')
+dotenv.config()
+
+const passport = require('./core/passport.js')
 const app = express()
 
 app.use(passport.initialize())
@@ -17,19 +18,13 @@ app.get(
         res.send(
             `<script>window.opener.postMessage('${JSON.stringify(
                 req.user,
-            )}', '*');window.close();</script>`,
+            )}', 'http://localhost:3000');window.close();</script>`,
         )
     },
 )
 
-https
-    .createServer(
-        {
-            key: fs.readFileSync('server.key'),
-            cert: fs.readFileSync('server.cert'),
-        },
-        app,
-    )
-    .listen(3001, function () {
-        console.log('server started')
-    })
+const port = 3001
+
+app.listen(port, () => {
+    console.log(`http://localhost:3001/auth/github/`)
+})
