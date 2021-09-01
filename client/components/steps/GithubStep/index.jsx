@@ -12,10 +12,17 @@ export const GithubStep = () => {
 
     const onClickAuth = () => {
         const win = window.open(
-            'https://localhost:3001/auth/github',
+            'http://localhost:3001/auth/github',
             'Auth',
             'width=500,height=500,status=yes,toolbar=no,menubar=no,location=no',
         )
+
+        const timer = setInterval(() => {
+            if (win.closed) {
+                clearInterval(timer)
+                onNextStep()
+            }
+        }, 100)
     }
 
     React.useEffect(() => {
@@ -53,7 +60,7 @@ export const GithubStep = () => {
                         src="/static/GitHub.png"
                         alt="GitHub logo"
                         className={styles.GitHubLogo}
-                        width='18px'
+                        width="18px"
                     />
                     Import from GitHub
                     <img className="d-ib ml-10" src="/static/arrow.svg" />

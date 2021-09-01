@@ -14,8 +14,12 @@ app.get('/auth/github', passport.authenticate('github'))
 app.get(
     '/auth/github/callback',
     passport.authenticate('github', { failureRedirect: '/login' }),
-    function (req, res) {
-        res.redirect('/')
+    (req, res) => {
+        res.send(
+            `<script>window.opener.postMessage('${JSON.stringify(
+                req.user,
+            )}', 'http://localhost:3000');window.close();</script>`,
+        )
     },
 )
 
